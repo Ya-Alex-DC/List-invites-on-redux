@@ -15,13 +15,6 @@ const DELETE_USER = 'DELETE_USER'
 const ON_CHANGE_VALUE = 'ON_CHANGE_VALUE'
 const TOGGLE_INVITE = 'TOGGLE_INVITE'
 
-
-export const deletedUser = (payload) => ({ type: DELETE_USER, payload })
-export const changeValue = (payload) => ({ type: ON_CHANGE_VALUE, payload })
-export const addUsers = (payload) => ({ type: ADD_USERS, payload })
-export const toggleInvite = (payload) => ({ type: TOGGLE_INVITE, payload: payload })
-
-
 const reducer = (state = users, action) => {
 	switch (action.type) {
 
@@ -49,6 +42,11 @@ const reducer = (state = users, action) => {
 			return state
 	}
 }
+
+export const deletedUser = (payload) => ({ type: DELETE_USER, payload })
+export const changeValue = (payload) => ({ type: ON_CHANGE_VALUE, payload })
+export const addUsers = (payload) => ({ type: ADD_USERS, payload })
+export const toggleInvite = (payload) => ({ type: TOGGLE_INVITE, payload: payload })
 
 const store = createStore(reducer, applyMiddleware(thunk))
 console.log(store.getState())

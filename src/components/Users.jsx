@@ -2,8 +2,6 @@ import { Info2 } from "./Input"
 import { useSelector, useDispatch } from 'react-redux'
 import { addUsers, changeValue } from ".."
 
-
-
 export const Users2 = () => {
 	const user = useSelector(state => state.userList)
 	const value = useSelector(state => state.value)
@@ -25,22 +23,22 @@ export const Users2 = () => {
 		dispatch(changeValue(e.target.value))
 	}
 
-return (
-	<div>
-		<input type="text" value={value} onChange={onChengeValue} placeholder="Найти пользователя"></input>
-		<ul>
-		{user.filter((e) => {
+	return (
+		<div>
+			<input type="text" value={value} onChange={onChengeValue} placeholder="Найти пользователя"></input>
+			<ul>
+				{user.filter((e) => {
 					const fullName = e.first_name.toLowerCase() + e.last_name.toLowerCase()
 					const search = value.toLowerCase()
 					return fullName.includes(search) || e.email.toLowerCase().includes(search)
-				}).map(e => 
-			<Info2 
-			key={e.id}
-			{...e}				
-			/>
-		)}
-		</ul>
-		<button onClick={()=> dispatch(fetchUsers())} className="btn_add">Добавить</button>
-	</div>
-)
+				}).map(e =>
+					<Info2
+						key={e.id}
+						{...e}
+					/>
+				)}
+			</ul>
+			<button onClick={() => dispatch(fetchUsers())} className="btn_add">Добавить</button>
+		</div>
+	)
 }

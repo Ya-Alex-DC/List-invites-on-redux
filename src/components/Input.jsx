@@ -3,9 +3,6 @@ import { useDispatch } from 'react-redux';
 
 export const Info2 = ({ id, first_name, last_name, avatar, email, invited }) => {
 
-	// const deleteUser = (id) => {
-
-	// }
 	const dispatch = useDispatch()
 
 	return (
