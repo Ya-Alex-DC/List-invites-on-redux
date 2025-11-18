@@ -1,25 +1,15 @@
 import { Info2 } from "./Input"
-import { useSelector, useDispatch } from 'react-redux'
-import { addUsers, changeValue } from ".."
+import { useAppDispatch, useAppSelector } from "./store/hooks"
+import { changeValue } from "./store/action"
+import { fetchUsers } from "./store/getFetch"
+import React from 'react';
 
-export const Users2 = () => {
-	const user = useSelector(state => state.userList)
-	const value = useSelector(state => state.value)
-	const dispatch = useDispatch()
+export const Users2: React.FC = () => {
+	const user = useAppSelector(state => state.userList)
+	const value = useAppSelector(state => state.value)
+	const dispatch = useAppDispatch()
 
-	const fetchUsers = () => {
-		return function (dispatch) {
-			fetch('http://localhost:3500/data')
-				.then(res => res.json())
-				.then((json) => dispatch(addUsers(json)))
-				.catch(err => {
-					console.warn(err)
-					alert('Ошибка')
-				})
-		}
-	}
-
-	const onChengeValue = (e) => {
+	const onChengeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(changeValue(e.target.value))
 	}
 

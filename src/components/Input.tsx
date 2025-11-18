@@ -1,9 +1,10 @@
-import { deletedUser, toggleInvite } from "..";
-import { useDispatch } from 'react-redux';
+import { deletedUser, toggleInvite } from "./store/action";
+import { useAppDispatch } from "./store/hooks"
+import { addOpros } from "./store/types";
 
-export const Info2 = ({ id, first_name, last_name, avatar, email, invited }) => {
+export const Info2: React.FC<addOpros> = ({ id, first_name, last_name, avatar, email, invited }) => {
 
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	return (
 		<li className="user_block">
